@@ -10,7 +10,7 @@ package object twquery {
    * @param users
    */
   implicit class UserUtils(users: Seq[User]) {
-    def throttledEach[U] (f: Any => U, limit: Int, interval: Int) = {
+    def throttledEach[U] (f: User => U, limit: Int, interval: Int) = {
       var these = users
       val sleepTime: Int = interval / limit
       while(!these.isEmpty) {
