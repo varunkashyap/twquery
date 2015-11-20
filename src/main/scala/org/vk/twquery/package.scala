@@ -18,6 +18,15 @@ package object twquery {
         Thread.sleep(sleepTime)
         these = these.tail
       }
-    }
+
+    def throttledMap[U] (f: User => U, limit: Int, interval: Int) = {
+      var these = users
+      val sleepTime: Int = interval / limit
+      while(!these.isEmpty) {
+        f(these.head)
+        Thread.sleep(sleepTime)
+        these = these.tail
+      }
+    }}
   }
 }
